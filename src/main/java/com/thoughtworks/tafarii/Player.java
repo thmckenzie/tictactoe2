@@ -8,14 +8,16 @@ import java.io.PrintStream;
  * Created by tafarii on 9/30/16.
  */
 public class Player {
+    private final String symbol;
     private PrintStream printStream;
     private Board board;
     private BufferedReader bufferedReader;
 
-    public Player(PrintStream printStream, Board board, BufferedReader bufferedReader) {
+    public Player(PrintStream printStream, Board board, BufferedReader bufferedReader, String symbol) {
         this.printStream = printStream;
         this.board = board;
         this.bufferedReader = bufferedReader;
+        this.symbol = symbol;
     }
 
     public void makeMove() {
@@ -28,7 +30,7 @@ public class Player {
             e.printStackTrace();
         }
 
-        board.placeMark("x", mark);
+        board.placeMark(symbol, mark);
         board.drawBoard();
     }
 }

@@ -12,13 +12,15 @@ import static org.mockito.Mockito.verify;
 public class GameTest {
     private Board board;
     private Game game;
-    private Player player;
+    private Player firstPlayer;
+    private Player secondPlayer;
 
     @Before
     public void setUp() throws Exception {
         board = mock(Board.class);
-        player = mock(Player.class);
-        game = new Game(board, player);
+        firstPlayer = mock(Player.class);
+        secondPlayer = mock(Player.class);
+        game = new Game(board, firstPlayer, secondPlayer);
     }
 
     @Test
@@ -29,16 +31,16 @@ public class GameTest {
     }
 
     @Test
-    public void playerMakesMoveWhenStarting() throws Exception {
+    public void firstPlayerMakesMoveWhenStarting() throws Exception {
         game.start();
 
-        verify(player).makeMove();
+        verify(firstPlayer).makeMove();
     }
 
-    /*@Test
-    public void nextPlayerGoesAfterFirstPlayerGoes() throws Exception {
+    @Test
+    public void secondPlayerMakesMoveAfterFirstPlayerMakesMove() throws Exception {
         game.start();
 
-        verify(game).nextPlayerGo();
-    }*/
+        verify(secondPlayer).makeMove();
+    }
 }

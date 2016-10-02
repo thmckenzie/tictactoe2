@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.PrintStream;
 
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -24,7 +26,7 @@ public class PlayerTest {
         bufferedReader = mock(BufferedReader.class);
         printStream = mock(PrintStream.class);
         board = mock(Board.class);
-        player = new Player(printStream, board, bufferedReader);
+        player = new Player(printStream, board, bufferedReader, "x");
 
     }
 
@@ -51,5 +53,12 @@ public class PlayerTest {
         verify(board).placeMark("x", "1");
     }
 
+    @Test
+    public void shouldMarkBoardWithOWhenPlayerSymbolIsO() throws Exception {
+        Player player2 = new Player(printStream, board, bufferedReader, "O");
 
+        player2.makeMove();
+
+        verify(board).placeMark(eq("O"), anyString());
+    }
 }
