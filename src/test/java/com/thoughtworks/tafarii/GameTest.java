@@ -35,4 +35,10 @@ public class GameTest {
         verify(player).makeMove();
     }
 
+    /*@Test
+    public void nextPlayerGoesAfterFirstPlayerGoes() throws Exception {
+        game.start();
+
+        verify(game).nextPlayerGo();
+    }*/
 }

@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class Board {
     private PrintStream printStream;
-    private String[] board = {"1", "|", "2", "|","3\n", "4", "|", "5", "|" ,"6\n", "7", "|","8", "|", "9"};
+    private String[] board = {"1", "|", "2", "|","3\n", "4", "|", "5", "|" ,"6\n", "7", "|","8", "|", "9\n"};
 
     public Board(PrintStream printStream) {
         this.printStream = printStream;
@@ -21,6 +21,11 @@ public class Board {
     }
 
     public void placeMark(String symbol, String location) {
+        for(int i = 0; i < board.length; i++){
+            if(board[i].equals(location) || board[i].equals(location + "\n")){
+                board[i] = symbol;
+            }
+        }
 
     }
 

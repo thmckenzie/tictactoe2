@@ -30,20 +30,18 @@ public class BoardTest {
 
         verify(printStream).print("1|2|3\n" +
                                     "4|5|6\n" +
-                                    "7|8|9");
+                                    "7|8|9\n");
     }
 
     //NEED TO UPDATE THIS TEST
     @Test
     public void shouldPlaceSymbolInLocationWhenPlacingMark() throws Exception {
-        board.placeMark("x", "1");
+        board.placeMark("X", "1");
 
         board.drawBoard();
 
-        verify(printStream).println("X|2|3\n" +
-                                    "-----\n" +
+        verify(printStream).print("X|2|3\n" +
                                     "4|5|6\n" +
-                                    "-----\n" +
                                     "7|8|9\n");
     }
 }
