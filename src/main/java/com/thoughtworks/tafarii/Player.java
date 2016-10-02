@@ -30,6 +30,10 @@ public class Player {
             e.printStackTrace();
         }
 
+
+        //more tests on make move to make sure the right thing happens
+        printStream.println("Location already taken.");
+
         board.placeMark(symbol, mark);
         board.drawBoard();
     }

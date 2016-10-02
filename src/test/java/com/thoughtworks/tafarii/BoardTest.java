@@ -5,11 +5,8 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
-import static com.sun.javaws.JnlpxArgs.verify;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by tafarii on 10/1/16.
@@ -21,7 +18,9 @@ public class BoardTest {
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
-        board = new Board(printStream);
+        String[] boardContents = {"1", "|", "2", "|", "3\n", "4", "|", "5", "|", "6\n", "7", "|", "8", "|", "9\n"};
+
+        board = new Board(printStream, boardContents);
     }
 
     @Test
@@ -33,7 +32,6 @@ public class BoardTest {
                                     "7|8|9\n");
     }
 
-    //NEED TO UPDATE THIS TEST
     @Test
     public void shouldPlaceSymbolInLocationWhenPlacingMark() throws Exception {
         board.placeMark("X", "1");
@@ -44,4 +42,6 @@ public class BoardTest {
                                     "4|5|6\n" +
                                     "7|8|9\n");
     }
+
+
 }

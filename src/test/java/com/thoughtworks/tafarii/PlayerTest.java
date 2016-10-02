@@ -61,4 +61,14 @@ public class PlayerTest {
 
         verify(board).placeMark(eq("O"), anyString());
     }
+
+    @Test
+    public void shouldPrintTakenMessageWhenCellIsTaken() throws Exception {
+        when(board.isCellTaken()).thenReturn(true);
+
+        player.makeMove();
+
+        verify(printStream).println("Location already taken.");
+    }
+
 }

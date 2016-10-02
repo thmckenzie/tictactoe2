@@ -1,17 +1,17 @@
 package com.thoughtworks.tafarii;
 
 import java.io.PrintStream;
-import java.util.Arrays;
 
 /**
  * Created by tafarii on 9/30/16.
  */
 public class Board {
     private PrintStream printStream;
-    private String[] board = {"1", "|", "2", "|","3\n", "4", "|", "5", "|" ,"6\n", "7", "|","8", "|", "9\n"};
+    private String[] board;
 
-    public Board(PrintStream printStream) {
+    public Board(PrintStream printStream, String[] boardContents) {
         this.printStream = printStream;
+        this.board = boardContents;
     }
 
     public void drawBoard() {
@@ -21,12 +21,17 @@ public class Board {
     }
 
     public void placeMark(String symbol, String location) {
-        for(int i = 0; i < board.length; i++){
-            if(board[i].equals(location) || board[i].equals(location + "\n")){
+        for (int i = 0; i < board.length; i++) {
+            if (board[i].equals(location) || board[i].equals(location + "\n")) {
                 board[i] = symbol;
             }
         }
 
     }
 
+
+    public Boolean isCellTaken() {
+        printStream.println("Location already taken. Please enter a different location.");
+        return true;
+    }
 }
